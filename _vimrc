@@ -13,6 +13,7 @@ call plug#end()
 syntax on
 filetype on
 set autochdir
+set autoread
 set number
 set splitright
 set splitbelow
@@ -43,3 +44,8 @@ nnoremap <C-T> :NERDTreeToggle <CR>
 nnoremap p "+p
 vnoremap y "+y
 vnoremap d "_d
+
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
