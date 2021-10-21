@@ -44,7 +44,7 @@ nnoremap <C-T> :NERDTreeToggle <CR>
 nnoremap p "+p
 vnoremap y "+y
 vnoremap d "_d
-
+nnoremap <C-B> :vert term runner.bat % <CR>
 nnoremap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
