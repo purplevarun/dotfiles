@@ -3,6 +3,7 @@ set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 
 " plugins
 call plug#begin('~/.vim/plugged')
+Plug 'itchyny/vim-gitbranch'
 Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdcommenter'
@@ -15,7 +16,25 @@ Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
 " config
-set noswapfile nobackup noundofile splitright splitbelow wrap linebreak noshowmode incsearch nohlsearch scrolloff=8 autochdir autoread history=5 tabstop=4 softtabstop=4 expandtab number mouse=a
+set noswapfile 
+set nobackup 
+set noundofile 
+set splitright 
+set splitbelow 
+set wrap 
+set linebreak 
+set noshowmode 
+set incsearch 
+set nohlsearch 
+set scrolloff=8 
+set autochdir 
+set autoread 
+set history=5 
+set tabstop=4 
+set softtabstop=4 
+set expandtab 
+set number 
+set mouse=a
 
 " keymaps
 let mapleader = ","
@@ -32,10 +51,23 @@ let g:NERDTreeWinPos = "right"
 nnoremap <C-t> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeIgnore = ['node_modules']
 
 " coc settings
+" coc.preferences.formatOnSaveFiletypes": ["*"] -> inside CocConfig
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" lightline settings
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
