@@ -3,6 +3,7 @@ set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 
 " plugins
 call plug#begin('~/.vim/plugged')
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'itchyny/vim-gitbranch'
 Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
@@ -13,6 +14,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mattn/emmet-vim'
+Plug 'neoclide/coc-emmet'
 call plug#end()
 
 " config
@@ -39,6 +42,10 @@ set mouse=a
 
 " keymaps
 let mapleader = ","
+nnoremap <Home> <Esc><S-I>
+nnoremap <End> <Esc><S-A>
+inoremap <Home> <Esc><S-I>
+inoremap <End> <Esc><S-A>
 nnoremap <C-S> :w <CR>
 nnoremap <C-Q> :q <CR>
 nnoremap <C-L> :source % <CR>
@@ -46,6 +53,7 @@ nnoremap <C-P> :e $MYVIMRC <CR>
 nnoremap p "+p
 vnoremap y "+y
 vnoremap d "_d
+vnoremap x "+d
 
 " nerdtree settings
 let g:NERDTreeWinPos = "right"
@@ -72,3 +80,4 @@ let g:lightline = {
       \   'gitbranch': 'gitbranch#name'
       \ },
       \ }
+
