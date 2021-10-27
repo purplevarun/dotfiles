@@ -63,7 +63,6 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeIgnore = ['node_modules']
 
 " coc settings
-" coc.preferences.formatOnSaveFiletypes": ["*"] -> inside CocConfig
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -81,3 +80,23 @@ let g:lightline = {
       \ },
       \ }
 
+" some git shortcuts
+nnoremap <C-G> :!git add . && git commit -am % <CR>
+nnoremap <C-H> :!git push <CR>
+
+" code runner shortcuts
+nnoremap <C-B> :call Run() <CR>
+function Run()
+  silent exec "!touch in"
+  if &filetype == 'cpp'
+    exec "!g++ -std=c++17 -Wl,--stack,536870912 % && a < in && del a.exe"
+  elseif &filetype == 'javascript.jsx'
+    exec "!node % < in"
+  elseif &filetype == 'python'
+    exec "!python % < in"
+  elseif &filetype == 'java'
+    exec "!java % < in"
+  elseif &filetype == 'sql'
+    exec "!mysql -u root --table < %"
+  endif
+endfunction
