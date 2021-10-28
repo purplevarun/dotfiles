@@ -1,4 +1,0 @@
-{
-  "coc.preferences.formatOnSaveFiletypes": ["*"],
-  "python.analysis.typeCheckingMode": "off"
-}
