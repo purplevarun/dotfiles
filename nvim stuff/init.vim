@@ -1,5 +1,6 @@
 " encoding
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
+cd ~\Desktop
 
 " plugins
 call plug#begin()
@@ -8,7 +9,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'itchyny/vim-gitbranch'
 Plug 'preservim/nerdtree'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdcommenter'
 Plug 'Jorengarenar/miniSnip'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -71,20 +73,12 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-" lightline settings
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
-      \ },
-      \ }
+" airline settings
+let g:airline_powerline_fonts = 1
 
-" some git shortcuts
-nnoremap <C-G> :!git add . && git commit -am % <CR>
-nnoremap <C-H> :!git push <CR>
+" fzf settings
+nnoremap <C-F> :FZF <CR>
+"let g:fzf_layout = { 'right': '40%' }
 
 " code runner shortcuts
 nnoremap <C-B> :call Run() <CR>
