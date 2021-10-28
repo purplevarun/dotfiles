@@ -9,6 +9,10 @@ alias code=nvim
 
 HISTSIZE=10
 
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
 # prompt design
 redColor="\[\033[01;31m\]"
 greenColor="\[\033[01;32m\]"
@@ -16,4 +20,4 @@ yellowColor="\[\033[01;33m\]"
 blueColor="\[\033[01;34m\]"
 whiteColor="\[\033[01;37m\]"
 date="\d"
-PS1="${redColor}[${date}] ${greenColor}\u ${yellowColor}\w\n${blueColor}-> ${whiteColor}"
+PS1="${redColor}[${date}] ${greenColor}\u ${yellowColor}\w ${blueColor}$(parse_git_branch)\n${whiteColor}-> "
