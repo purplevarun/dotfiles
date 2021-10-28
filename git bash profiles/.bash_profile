@@ -16,4 +16,5 @@ yellowColor="\[\033[01;33m\]"
 blueColor="\[\033[01;34m\]"
 whiteColor="\[\033[01;37m\]"
 date="\d"
-PS1="${redColor}[${date}] ${greenColor}\u ${yellowColor}\w \n${whiteColor}-> "
+
+PS1="${redColor}[${date}] ${greenColor}\u ${yellowColor}\w ${blueColor}`__git_ps1`\n${whiteColor}-> "

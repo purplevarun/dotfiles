@@ -2,7 +2,9 @@
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 
 " plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'itchyny/vim-gitbranch'
 Plug 'preservim/nerdtree'
