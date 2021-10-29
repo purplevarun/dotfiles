@@ -20,7 +20,9 @@ Plug 'mxw/vim-jsx'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc-emmet'
+Plug 'morhetz/gruvbox'
 call plug#end()
+color gruvbox
 
 " config
 set noswapfile
@@ -54,6 +56,7 @@ nnoremap <C-S> :w <CR>
 nnoremap <C-Q> :q <CR>
 nnoremap <C-L> :source % <CR>
 nnoremap <C-P> :e $MYVIMRC <CR>
+nnoremap <C-B> :!runner % <CR>
 nnoremap p "+p
 vnoremap y "+y
 vnoremap d "_d
@@ -79,20 +82,3 @@ let g:airline_powerline_fonts = 1
 " fzf settings
 nnoremap <C-F> :FZF <CR>
 "let g:fzf_layout = { 'right': '40%' }
-
-" code runner shortcuts
-nnoremap <C-B> :call Run() <CR>
-function Run()
-  silent exec "!touch in"
-  if &filetype == 'cpp'
-    exec "!g++ -std=c++17 -Wl,--stack,536870912 % && a < in && del a.exe"
-  elseif &filetype == 'javascript.jsx'
-    exec "!node % < in"
-  elseif &filetype == 'python'
-    exec "!python % < in"
-  elseif &filetype == 'java'
-    exec "!java % < in"
-  elseif &filetype == 'sql'
-    exec "!mysql -u root --table < %"
-  endif
-endfunction
