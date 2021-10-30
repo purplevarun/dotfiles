@@ -30,7 +30,7 @@ set nobackup
 set noundofile
 set splitright
 set splitbelow
-set wrap
+set nowrap
 set linebreak
 set noshowmode
 set incsearch
@@ -48,8 +48,8 @@ set mouse=a
 
 " keymaps
 let mapleader = ","
-nnoremap <Home> <Esc><S-I>
-nnoremap <End> <Esc><S-A>
+nnoremap <Home> <S-I><Esc>
+nnoremap <End> <S-A><Esc>
 inoremap <Home> <Esc><S-I>
 inoremap <End> <Esc><S-A>
 nnoremap <C-S> :w <CR>
@@ -57,6 +57,7 @@ nnoremap <C-Q> :q <CR>
 nnoremap <C-L> :source % <CR>
 nnoremap <C-P> :e $MYVIMRC <CR>
 nnoremap <C-B> :!runner % <CR>
+nnoremap <C-A> ggVG
 nnoremap p "+p
 vnoremap y "+y
 vnoremap d "_d
