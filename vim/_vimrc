@@ -1,8 +1,13 @@
 " purplevarun's _vimrc for gvim
 " ---------------------------------------------
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
 syntax on
 filetype on
 cd ~\Desktop
+highlight Pmenu guibg=white
+highlight PmenuSel guibg=red
 " ---------------------------------------------
 call plug#begin()
 Plug 'preservim/nerdtree'
@@ -23,9 +28,9 @@ set linebreak
 set nohlsearch
 set incsearch
 set scrolloff=8
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set history=5
 set noshowmode
@@ -35,7 +40,7 @@ set noundofile
 set noswapfile
 set guioptions=
 set guicursor=a:blinkoff0
-set guifont:Fixedsys:h15
+set guifont:JetBrainsMono_NF:h15
 set laststatus=2
 set autoread
 set backspace=2
@@ -58,6 +63,7 @@ nnoremap <C-Q> :q          <CR>
 nnoremap <C-L> :source %   <CR>
 nnoremap <C-P> :e $MYVIMRC <CR>
 nnoremap <C-N> :tabnew     <CR>
+nnoremap <C-K> :term       <CR>
 nnoremap <C-Tab> <C-W><C-W>
 nnoremap <C-B> :vert term runner.bat % <CR>
 " ---------------------------------------------
@@ -83,3 +89,9 @@ function GetMode()
         return mode()
     endif
 endfunction
+" ----------------------------------------------
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
