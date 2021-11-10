@@ -1,0 +1,30 @@
+" purplevarun's _vimrc for gvim
+
+" ---------------------------------------------
+syntax on
+filetype on
+cd ~\Desktop
+" ---------------------------------------------
+set history=5
+set noshowmode
+set autochdir
+set nobackup
+set noundofile
+set noswapfile
+set guioptions=
+set guicursor=a:blinkoff0
+set guifont:Fixedsys:h15
+set laststatus=2
+set autoread
+set backspace=2
+set splitright
+set splitbelow
+" ---------------------------------------------
+nnoremap <C-S> :w          <CR>
+nnoremap <C-Q> :q          <CR>
+nnoremap <C-L> :source %   <CR>
+nnoremap <C-P> :e $MYVIMRC <CR>
+nnoremap <C-N> :tabnew     <CR>
+nnoremap <C-Tab> <C-W><C-W>
+nnoremap <C-B> :vert term runner.bat % <CR>
+" ---------------------------------------------
