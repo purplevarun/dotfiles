@@ -1,10 +1,32 @@
 " purplevarun's _vimrc for gvim
-
 " ---------------------------------------------
 syntax on
 filetype on
 cd ~\Desktop
 " ---------------------------------------------
+call plug#begin()
+Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'Jorengarenar/miniSnip'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'itchyny/vim-gitbranch'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pangloss/vim-javascript'
+"Plug 'mxw/vim-jsx'
+"Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mattn/emmet-vim'
+call plug#end()
+" ---------------------------------------------
+set number
+set wrap
+set linebreak
+set nohlsearch
+set incsearch
+set scrolloff=8
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
 set history=5
 set noshowmode
 set autochdir
@@ -20,6 +42,17 @@ set backspace=2
 set splitright
 set splitbelow
 " ---------------------------------------------
+let mapleader = ","
+nnoremap <C-A> ggVG
+nnoremap p "+p
+vnoremap y "+y
+vnoremap d "_d
+vnoremap x "+d
+nnoremap <CR> o
+nnoremap <Home> <S-I><Esc>
+nnoremap <End> <S-A><Esc>
+inoremap <Home> <Esc><S-I>
+inoremap <End> <Esc><S-A>
 nnoremap <C-S> :w          <CR>
 nnoremap <C-Q> :q          <CR>
 nnoremap <C-L> :source %   <CR>
@@ -28,3 +61,25 @@ nnoremap <C-N> :tabnew     <CR>
 nnoremap <C-Tab> <C-W><C-W>
 nnoremap <C-B> :vert term runner.bat % <CR>
 " ---------------------------------------------
+let g:NERDTreeWinPos = "right"
+nnoremap <C-t> :NERDTreeToggle<CR>
+let g:NERDTreeIgnore = ['node_modules']
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" ---------------------------------------------
+set statusline=%f,\ %L\ %=%{gitbranch#name()}\ [%{GetMode()}]
+" ---------------------------------------------
+function GetMode()
+    if mode() == "n"
+        return "NORMAL"
+    elseif mode() == "i"
+        return "INSERT"
+    elseif mode() == "v"
+        return "VISUAL"
+    elseif mode() == "V"
+        return "VISUAL-LINE"
+    elseif mode() == "c"
+        return "COMMAND"
+    else
+        return mode()
+    endif
+endfunction

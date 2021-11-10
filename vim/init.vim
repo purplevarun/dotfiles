@@ -79,7 +79,3 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " airline settings
 let g:airline_powerline_fonts = 1
-
-" fzf settings
-nnoremap <C-F> :FZF <CR>
-"let g:fzf_layout = { 'right': '40%' }
