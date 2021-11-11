@@ -1,27 +1,20 @@
-" purplevarun's _vimrc for gvim
-" ---------------------------------------------
 set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
+cd ~\Desktop
 syntax on
 filetype on
-cd ~\Desktop
-highlight Pmenu guibg=white
-highlight PmenuSel guibg=red
-" ---------------------------------------------
-call plug#begin()
+highlight Pmenu guibg=yellow
+"------------------------------------
+call plug#begin('~/mystuff/vim/plugged')
+Plug 'itchyny/vim-gitbranch'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'Jorengarenar/miniSnip'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'itchyny/vim-gitbranch'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pangloss/vim-javascript'
-"Plug 'mxw/vim-jsx'
-"Plug 'maxmellon/vim-jsx-pretty'
-Plug 'mattn/emmet-vim'
 call plug#end()
-" ---------------------------------------------
+"------------------------------------
 set number
 set wrap
 set linebreak
@@ -40,38 +33,32 @@ set noundofile
 set noswapfile
 set guioptions=
 set guicursor=a:blinkoff0
-set guifont:JetBrainsMono_NF:h15
+set guifont=fixedsys:h15
 set laststatus=2
 set autoread
 set backspace=2
 set splitright
 set splitbelow
-" ---------------------------------------------
-let mapleader = ","
-nnoremap <C-A> ggVG
-nnoremap p "+p
-vnoremap y "+y
-vnoremap d "_d
-vnoremap x "+d
-nnoremap <CR> o
+"------------------------------------
+nnoremap <C-Tab> <C-W><C-W>
+nnoremap <C-B> :vert term runner.bat % <CR>
 nnoremap <Home> <S-I><Esc>
 nnoremap <End> <S-A><Esc>
 inoremap <Home> <Esc><S-I>
 inoremap <End> <Esc><S-A>
-nnoremap <C-S> :w          <CR>
-nnoremap <C-Q> :q          <CR>
-nnoremap <C-L> :source %   <CR>
+nnoremap <C-S> :w <CR>
+nnoremap <C-Q> :q <CR>
+nnoremap `     :!start cmd <CR>
 nnoremap <C-P> :e $MYVIMRC <CR>
-nnoremap <C-N> :tabnew     <CR>
-nnoremap <C-K> :term       <CR>
-nnoremap <C-Tab> <C-W><C-W>
-nnoremap <C-B> :vert term runner.bat % <CR>
-" ---------------------------------------------
-let g:NERDTreeWinPos = "right"
-nnoremap <C-t> :NERDTreeToggle<CR>
-let g:NERDTreeIgnore = ['node_modules']
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" ---------------------------------------------
+nnoremap <C-L> :source % <CR>
+nnoremap <C-A> ggVG
+"------------------------------------
+let mapleader = ","
+vnoremap y "+y
+vnoremap d "_d
+vnoremap x "+d
+nnoremap p "+p
+"------------------------------------
 set statusline=%f,\ %L\ %=%{gitbranch#name()}\ [%{GetMode()}]
 " ---------------------------------------------
 function GetMode()
@@ -94,4 +81,4 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" ---------------------------------------------
