@@ -1,6 +1,6 @@
 " purplevarun's vimrc
 " plugins
-call plug#begin()
+call plug#begin("~/vimplugins/")
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
@@ -18,6 +18,7 @@ call plug#end()
 set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
+cd ~\Desktop
 " ----------------------------------------------------------------------
 
 " config
@@ -56,7 +57,7 @@ inoremap <End> <Esc><S-A>
 nnoremap <C-S> :w <CR>
 nnoremap <C-Q> :q <CR>
 nnoremap <C-L> :source % <CR>
-nnoremap <C-B> :call RUN()<CR>
+nnoremap <C-B> :!runner % <CR>
 nnoremap <C-P> :e $MYVIMRC <CR>
 nnoremap <C-A> ggVG
 nnoremap p "+p
@@ -115,25 +116,4 @@ autocmd VimEnter *
     \ |   NERDTree
     \ |   wincmd w
     \ | endif
-" ----------------------------------------------------------------------
-
-
-
-
-
-
-" setup win2yank for wsl-to-clipboard copy paste
-set clipboard+=unnamedplus
-let g:clipboard = {
-          \   'name': 'win32yank-wsl',
-          \   'copy': {
-          \      '+': 'win32yank.exe -i --crlf',
-          \      '*': 'win32yank.exe -i --crlf',
-          \    },
-          \   'paste': {
-          \      '+': 'win32yank.exe -o --lf',
-          \      '*': 'win32yank.exe -o --lf',
-          \   },
-          \   'cache_enabled': 0,
-          \ }
 " ----------------------------------------------------------------------
