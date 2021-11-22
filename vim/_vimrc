@@ -1,3 +1,4 @@
+
 " purplevarun's vimrc
 " plugins
 call plug#begin("~/vimplugins/")
@@ -6,10 +7,10 @@ Plug 'preservim/nerdcommenter'
 Plug 'Jorengarenar/miniSnip'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'preservim/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'uiiaoo/java-syntax.vim'
 call plug#end()
 " ----------------------------------------------------------------------
 
@@ -22,11 +23,12 @@ cd ~\Desktop
 
 " config
 filetype plugin indent on
-"hi Pmenu guibg=blue
-color torte
+hi Pmenu guibg=white
+let g:nerdtree_tabs_open_on_gui_startup=0
+set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set guioptions=
 set guicursor=a:blinkoff0
-set guifont=fixedsys:h15
+set guifont=JetBrainsMono_NF:h15:b
 set backspace=2
 set title
 set noswapfile
@@ -43,19 +45,38 @@ set scrolloff=8
 set autochdir
 set autoread
 set history=5
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 set smarttab
 set autoindent
 set number
 set laststatus=2
+set statusline=%f\ [%{MODE()}]\ %{gitbranch#name()}
 set mouse=a
+" ----------------------------------------------------------------------
+
+" ----------------------------------------------------------------------
+function MODE()
+    if mode()=="n" 
+        return "NORMAL"
+    elseif mode()=="i"
+        return "INSERT"
+    elseif mode()=="v"
+        return "VISUAL"
+    elseif mode()=="V"
+        return "VISUAL-LINE"
+    elseif mode()=="c"
+        return "COMMAND"
+    else
+        return mode()
+endfunction
 " ----------------------------------------------------------------------
 
 " keymaps
 let mapleader = ","
+hi Pmenu guibg=white
 nnoremap <C-T> :NERDTreeTabsToggle <CR>
 let g:NERDTreeWinPos = "right"
 nnoremap <Home> <S-I><Esc>
@@ -97,16 +118,4 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
-" ----------------------------------------------------------------------
-
-" lightline setup
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
-      \ },
-      \ }
 " ----------------------------------------------------------------------
