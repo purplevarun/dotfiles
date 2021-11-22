@@ -1,0 +1,112 @@
+" purplevarun's vimrc
+" plugins
+call plug#begin("~/vimplugins/")
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'preservim/nerdcommenter'
+Plug 'Jorengarenar/miniSnip'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
+Plug 'preservim/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+call plug#end()
+" ----------------------------------------------------------------------
+
+" encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
+cd ~\Desktop
+" ----------------------------------------------------------------------
+
+" config
+filetype plugin indent on
+"hi Pmenu guibg=blue
+color torte
+set guioptions=
+set guicursor=a:blinkoff0
+set guifont=fixedsys:h15
+set backspace=2
+set title
+set noswapfile
+set nobackup
+set noundofile
+set splitright
+set splitbelow
+set wrap
+set linebreak
+set noshowmode
+set incsearch
+set nohlsearch
+set scrolloff=8
+set autochdir
+set autoread
+set history=5
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
+set autoindent
+set number
+set laststatus=2
+set mouse=a
+" ----------------------------------------------------------------------
+
+" keymaps
+let mapleader = ","
+nnoremap <C-T> :NERDTreeTabsToggle <CR>
+let g:NERDTreeWinPos = "right"
+nnoremap <Home> <S-I><Esc>
+nnoremap <End> <S-A><Esc>
+inoremap <Home> <Esc><S-I>
+inoremap <End> <Esc><S-A>
+nnoremap <C-S> :w <CR>
+nnoremap <C-Q> :q <CR>
+nnoremap <C-L> :source % <CR>
+nnoremap <C-B> :!runner % <CR>
+nnoremap <C-P> :e $MYVIMRC <CR>
+nnoremap <C-A> ggVG
+nnoremap <C-Tab> <C-W><C-W>
+nnoremap yy "+yy
+vnoremap y "+y
+nnoremap p "+p
+nnoremap P "+P
+vnoremap p "+p
+vnoremap P "+P
+vnoremap d "_d
+vnoremap x "+d
+" ----------------------------------------------------------------------
+
+" coc setup
+inoremap <silent><expr> <c-space> coc#refresh()
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+" ----------------------------------------------------------------------
+
+" lightline setup
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
+" ----------------------------------------------------------------------
