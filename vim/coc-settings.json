@@ -1,4 +1,6 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["*"],
-  "python.analysis.typeCheckingMode": "off"
+	"coc.preferences.formatOnSaveFiletypes": ["*"],
+	"python.analysis.typeCheckingMode": "off",
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true
 }
