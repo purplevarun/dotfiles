@@ -2,27 +2,27 @@
 
 ; HOTKEYS
 
-+F1::
+#F1::
 Send {Volume_Mute}
 return
 
-+F2::
-Send {Volume_Up}
-return
-
-+F3::  
+#F2::
 Send {Volume_Down}
 return
 
-+F4::
+#F3::  
+Send {Volume_Up}
+return
+
+#F4::
 ChangeBrightness( CurrentBrightness := 0 ) 
 return
 
-+F5::
+#F5::
 ChangeBrightness( CurrentBrightness := 50 ) 
 return
 
-+F6::
+#F6::
 ChangeBrightness( CurrentBrightness := 100 ) 
 return
 
@@ -35,11 +35,11 @@ Send {End}
 return
 
 ^Up::
-Send {PgUp}
+Send ^{PgUp}
 return
 
 ^Down::
-Send {PgDn}
+Send ^{PgDn}
 return
 
 
