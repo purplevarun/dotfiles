@@ -1,5 +1,6 @@
 {
   "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "JetBrainsMono NF",
   "security.workspace.trust.enabled": false,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -25,10 +26,7 @@
     "editor.semanticHighlighting.enabled": true,
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
-  "[java]": {
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.defaultFormatter": "redhat.java"
-  },
+
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+  "prettier.tabWidth": 2
 }
