@@ -1,86 +1,75 @@
 " purplevarun's vimrc
-" plugins
-call plug#begin("~/vimplugins/")
-Plug 'preservim/nerdcommenter'
+" ---------------------------------------
+call plug#begin()
 Plug 'Jorengarenar/miniSnip'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'morhetz/gruvbox'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 call plug#end()
-" ----------------------------------------------------------------------
-" encoding
+" ---------------------------------------
+cd ~\Desktop
+syntax on
 set encoding=utf-8
-set fileencoding=utf-8
 set termencoding=utf-8
-cd ~\Desktop\vimstuff\
-" ----------------------------------------------------------------------
-" config
-filetype plugin indent on
-hi Pmenu guibg=white
-set guioptions=
-set guicursor=a:blinkoff0
-set guifont=fixedsys:h15
-set backspace=2
-set title
-set noswapfile
+set fileencoding=utf-8
+set mouse=a
 set nobackup
 set noundofile
+set noswapfile
+set backspace=2
+set laststatus=2
+set statusline=%f\ %{Mode()}\ %=%y\ %F
+set noshowmode
+set scrolloff=8
+set autoread
+set autochdir
+set number
 set splitright
 set splitbelow
-set wrap
-set linebreak
-set noshowmode
-set incsearch
-set nohlsearch
-set scrolloff=8
-set autochdir
-set autoread
-set history=5
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab
-set smarttab
 set autoindent
-set number
-set laststatus=2
-set statusline=%f\ [%{MODE()}]
-set mouse=a
-" ----------------------------------------------------------------------
-function MODE()
-    if mode()=="n" 
-        return "NORMAL"
-    elseif mode()=="i"
-        return "INSERT"
-    elseif mode()=="v"
-        return "VISUAL"
-    elseif mode()=="V"
-        return "VISUAL-LINE"
-    elseif mode()=="c"
-        return "COMMAND"
-    else
-        return mode()
-endfunction
-" ----------------------------------------------------------------------
-" keymaps
-let mapleader = ","
-nnoremap <Home> <S-I><Esc>
-nnoremap <End> <S-A><Esc>
-inoremap <Home> <Esc><S-I>
-inoremap <End> <Esc><S-A>
+" ---------------------------------------
 nnoremap <C-S> :w <CR>
 nnoremap <C-Q> :q <CR>
 nnoremap <C-L> :source % <CR>
-nnoremap <C-B> :vert term runner.bat % <CR>
 nnoremap <C-P> :e $MYVIMRC <CR>
+nnoremap <C-B> :!runner % <CR>
 nnoremap <C-A> ggVG
-nnoremap <C-Tab> <C-W><C-W>
-nnoremap yy "+yy
+" ---------------------------------------
 vnoremap y "+y
-nnoremap p "+p
-nnoremap P "+P
 vnoremap p "+p
 vnoremap P "+P
-vnoremap d "_d
-vnoremap x "+d
+nnoremap yy "+yy
+nnoremap p "+p
+nnoremap P "+P
+" ---------------------------------------
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" ----------------------------------------------------------------------
+" ---------------------------------------
+inoremap <Esc> <Esc>:highlight StatusLine ctermbg=red<CR>:echom ''<CR>
+" ---------------------------------------
+function Mode()
+	if mode()=="n"
+		highlight StatusLine ctermbg=red
+		return "NORMAL"
+	elseif mode()=="i"
+		highlight StatusLine ctermbg=blue
+		return "INSERT"
+	elseif mode()=="c"
+		return "COMMAND"
+	elseif mode()=="v"
+		return "VISUAL"
+	elseif mode()=="V"
+		return "VISUAL-LINE"
+	elseif mode()=="R"
+		return "REPLACE"
+	else
+		return mode()
+endfunction
+" ---------------------------------------
