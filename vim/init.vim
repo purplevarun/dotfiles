@@ -11,7 +11,6 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'itchyny/vim-gitbranch'
 Plug 'Pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'frazrepo/vim-rainbow'
 call plug#end()
 " ---------------------------------------
 syntax on
