@@ -1,4 +1,5 @@
 {
-	"coc.preferences.formatOnSaveFiletypes": ["*"],
-	"prettier.useTabs": true
+  "coc.preferences.formatOnSaveFiletypes": ["*"],
+  "prettier.tabWidth": 2,
+  "java.home": "C:\\Users\\Varun\\Documents\\jdk-17.0.1\\"
 }
