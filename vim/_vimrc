@@ -27,6 +27,7 @@ set backupdir=~\.vim\.backup\\
 set directory=~\.vim\.swap\\
 set splitright
 set splitbelow
+set history=10
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
