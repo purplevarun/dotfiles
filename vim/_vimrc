@@ -1,7 +1,7 @@
-" purplevarun's vimrc for gvim.exe
-" ---------------------------------------
-" plugins
-call plug#begin('~\.vim\plugged\')
+"  purplevarun's ~\_vimrc
+" --------------------------------------
+"  plugins
+call plug#begin()
 Plug 'Jorengarenar/miniSnip'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'preservim/nerdcommenter'
@@ -9,70 +9,75 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'uiiaoo/java-syntax.vim'
 Plug 'preservim/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'itchyny/vim-gitbranch'
 Plug 'Pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'tomasiser/vim-code-dark'
+Plug 'itchyny/vim-gitbranch'
 call plug#end()
-" ---------------------------------------
-" settings
-"cd ~\Desktop\
-colorscheme codedark 
+" --------------------------------------
+"  encoding
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+" --------------------------------------
+"  settings
 syntax on
+set autoread
+set autochdir
+set history=10
+set number
+set mouse=a
+set noshowmode
 set undofile
 set backup
 set swapfile
-set undodir=~\.vim\.undo\\
-set backupdir=~\.vim\.backup\\
-set directory=~\.vim\.swap\\
+set undodir=~\vimfiles\.undo\\
+set backupdir=~\vimfiles\.backup\\
+set directory=~\vimfiles\.swap\\
+set scrolloff=8
 set splitright
 set splitbelow
-set history=10
+set backspace=2
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set noshowmode
-set scrolloff=8
-set guioptions=
-set guicursor=a:blinkoff0
-set guifont=JetBrainsMono_NF:h14
 set laststatus=2
-set statusline=%f\ %{Mode()}\ %=%y\ %{gitbranch#name()}
-set number
-set autochdir
-set autoread
-set backspace=2
+set statusline=%f\ %{Mode()}\ %{gitbranch#name()}\  
+set wrap
+set linebreak
 set tabline=%!Tabline()
-" ---------------------------------------
+"set colorcolumn=80
+" --------------------------------------
 " personalisations
 let g:NERDTreeWinPos = "right"
 let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:NERDTreeStatusline = 'NerdTree'
 let mapleader=","
-" ---------------------------------------
-" config
+" --------------------------------------
+"  shortcuts
 nnoremap <C-S> :w <CR>
 nnoremap <C-Q> :q <CR>
-nnoremap <C-L> :source % <CR>
 nnoremap <C-P> :e $MYVIMRC <CR>
-nnoremap <C-B> :vert term runner.bat % <CR>
+nnoremap <C-L> :source % <CR>
+nnoremap <C-B> :!clear&&filerunner % <CR>
 nnoremap <C-T> :NERDTreeTabsToggle <CR>
-nnoremap <F1> :!start cmd <CR><CR>
 nnoremap <C-Tab> <C-W><C-W>
 nnoremap <C-A> ggVG
-" ---------------------------------------
-" clipboard
+" --------------------------------------
+"  clipboard
 vnoremap y "+y
+nnoremap yy "+yy
+vnoremap x "+x
 vnoremap p "+p
 vnoremap P "+P
-vnoremap x "+x
-nnoremap yy "+yy
 nnoremap p "+p
 nnoremap P "+P
-" ---------------------------------------
+nnoremap dd "_dd
+vnoremap d "_d
+" --------------------------------------
 " coc settings
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " ---------------------------------------
+" mode for statusline
 function Mode()
 	if mode()=="n"
 		return "NORMAL"
@@ -90,6 +95,7 @@ function Mode()
 		return mode()
 endfunction
 " ---------------------------------------
+" show only filename in tabline
 function! Tabline() abort
     let l:line = ''
     let l:current = tabpagenr()
