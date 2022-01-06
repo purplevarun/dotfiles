@@ -12,15 +12,15 @@ Else
 WinShow, ahk_id %HWND%
 Return
 
-#F1::
+^F1::
 Send {Volume_Mute}
 return
 
-#F2::
+^F2::
 Send {Volume_Down}
 return
 
-#F3::  
+^F3::  
 Send {Volume_Up}
 return
 
