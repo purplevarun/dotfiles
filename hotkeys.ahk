@@ -2,7 +2,7 @@
 
 ; HOTKEYS
 
-^#D::
++#D::
 ControlGet, HWND, Hwnd,, SysListView321, ahk_class Progman
 If HWND =
 ControlGet, HWND, Hwnd,, SysListView321, ahk_class WorkerW
