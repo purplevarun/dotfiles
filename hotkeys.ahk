@@ -2,6 +2,10 @@
 
 ; HOTKEYS
 
+#Space::
+Run "C:\Program Files\Everything\Everything.exe"
+return
+
 +#D::
 ControlGet, HWND, Hwnd,, SysListView321, ahk_class Progman
 If HWND =
